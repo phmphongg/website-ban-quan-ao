@@ -1,0 +1,35 @@
+<%# Partial cho một thẻ sản phẩm %>
+<div class="single-popular-items mb-50 text-center">
+  <div class="popular-img">
+    <a href="/products/<%= product.name %>">
+      <img src="<%= product.image && product.image.imageData ? `data:${product.image.imageType};base64,${product.image.imageData.toString('base64')}` : '/img/product-placeholder.png' %>" alt="<%= product.name %>">
+    </a>
+  </div>
+  <div class="popular-caption">
+    <h3 style="font-size:9rem;font-weight:800;line-height:1.15;margin-bottom:10px;word-break:break-word;"><%= product.name %></h3>
+    <p><%= product.description %></p>
+    <!-- Hiển thị sao đánh giá trung bình -->
+    <div class="product-rating" style="margin-bottom:8px;">
+      <% 
+        // Sử dụng displayRating đã làm tròn từ backend nếu có
+        const displayRating = typeof product.displayRating !== 'undefined' ? product.displayRating : 0;
+        const avgRating = typeof product.rating !== 'undefined' ? product.rating : 0;
+        const totalReviews = typeof product.ratingCount !== 'undefined' ? product.ratingCount : (product.reviewProducts ? product.reviewProducts.length : 0);
+        const rounded = Math.round(avgRating * 10) / 10;
+      %>
+      <% if (totalReviews > 0) { %>
+        <% for(let i=1;i<=5;i++) { %>
+          <% if (i <= displayRating) { %>
+            <i class="fas fa-star" style="color:#ffb400;"></i>
+          <% } else { %>
+            <i class="far fa-star" style="color:#ffb400;"></i>
+          <% } %>
+        <% } %>
+        <span style="font-size:1rem;color:#888;margin-left:6px;">(<%= rounded %> / 5, <%= totalReviews %> đánh giá)</span>
+      <% } else { %>
+        <span class="text-muted" style="font-size:1rem;">Chưa có đánh giá</span>
+      <% } %>
+    </div>
+    <!-- Không hiển thị type ở ngoài card -->
+  </div>
+</div>
