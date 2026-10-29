@@ -139,14 +139,11 @@ docker-compose stop
   <img src="./image/shipper.png" alt="alt text" width="600"/>
 </p>
 
-## 👨‍💻 Nhóm phát triển
+## 👨‍💻 Tác giả
+📧 Email: Minhphong0702@gmail.com
+🐙 GitHub: phmphongg
 
-| Họ và tên             | Mã sinh viên |
-| --------------------  | ------------ |
-| **Phạm Minh Phong**   | 23010088     |
-| **Bùi Đăng Vũ**       | 23010042     |
-| **Nguyễn Hoàng Đức**  | 23010054     |
-| **Nguyễn Thị Lan Anh**| 23010107     |
+
 
 ## 📄 Giấy phép
 
@@ -156,4 +153,4 @@ Dự án được phát triển phục vụ mục đích học tập và nghiên
 
 ## 📬 Liên hệ
 
-Mọi thắc mắc, góp ý hoặc trao đổi vui lòng liên hệ qua GitHub của nhóm hoặc email của các thành viên (nếu cần).
+Mọi thắc mắc, góp ý hoặc trao đổi vui lòng liên hệ qua GitHub của nhóm hoặc email của tác giả (nếu cần).
