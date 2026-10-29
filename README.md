@@ -140,8 +140,9 @@ docker-compose stop
 </p>
 
 ## 👨‍💻 Tác giả
-📧 Email: Minhphong0702@gmail.com
-🐙 GitHub: phmphongg
+- 📧 Email: Minhphong0702@gmail.com
+
+- 🐙 GitHub: phmphongg
 
 
 
