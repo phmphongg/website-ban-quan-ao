@@ -17,7 +17,11 @@ exports.getProductListPage = async (req, res, next) => {
         if (categoryName && categoryName !== 'all') {
             currentCategory = await Category.findOne({ name: categoryName });
             if (currentCategory) {
-                queryConditions.category = currentCategory._id;
+                const prodNames = (currentCategory.products || []).map(p => p.name);
+                queryConditions.$or = [
+                    { category: currentCategory._id },
+                    { name: { $in: prodNames } }
+                ];
                 pageTitle = currentCategory.name;
             }
         }
@@ -308,9 +312,20 @@ exports.getCategoryProductsPage = async (req, res, next) => {
         if (!category) {
             return res.status(404).render('pages/404', { title: 'Không tìm thấy danh mục' });
         }
+        // Luôn lấy sản phẩm mới nhất từ collection Product
+        const prodNames = (category.products || []).map(p => p.name);
+        let products = await Product.find({
+            $or: [
+                { category: category._id },
+                { name: { $in: prodNames } }
+            ]
+        });
+        if (!products || products.length === 0) {
+            products = category.products || [];
+        }
         // Gộp các type thành 1 sản phẩm theo name
         const groupedProducts = {};
-        (category.products || []).forEach(prod => {
+        products.forEach(prod => {
             if (!groupedProducts[prod.name]) {
                 groupedProducts[prod.name] = {
                     _id: prod._id,

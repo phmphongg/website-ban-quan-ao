@@ -12,6 +12,7 @@ const products = new Schema(
     name: { type: String },
     description: { type: String },
     type: { type: String },
+    category: { type: Schema.Types.ObjectId, ref: "categories" },
     detail: [detailList],
     image: {
       imageName: { type: String },
