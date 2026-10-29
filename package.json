@@ -1,0 +1,14 @@
+{
+  "name": "website-ban-quan-ao",
+  "version": "1.0.0",
+  "description": "Website Thuong Mai Dien Tu - Node.js, Express, MongoDB",
+  "private": true,
+  "scripts": {
+    "db": "docker start mongo1",
+    "db:up": "docker-compose up -d mongo1",
+    "db:stop": "docker stop mongo1",
+    "user": "npm start --prefix user",
+    "admin": "npm start --prefix admin"
+  }
+}
+

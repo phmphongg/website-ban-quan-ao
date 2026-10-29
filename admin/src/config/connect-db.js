@@ -9,7 +9,9 @@ const connectDB = async () => {
     await mongoose.connect(uri);
     console.log("✅ MongoDB connected");
   } catch (err) {
-    console.error("❌ MongoDB connection error:", err);
+    console.error("❌ MongoDB connection error:", err.message);
+    console.error("💡 Hướng dẫn khắc phục: Hãy đảm bảo Docker Desktop đang bật và MongoDB đã chạy.");
+    console.error("   Bạn có thể chạy lệnh: docker start mongo1 (hoặc từ thư mục gốc: docker-compose up -d mongo1)");
     process.exit(1);
   }
 };
