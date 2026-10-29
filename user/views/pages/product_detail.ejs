@@ -534,12 +534,13 @@
         details.forEach((d, idx) => {
             const opt = document.createElement('option');
             opt.value = idx;
-            opt.text = d.size;
+            opt.text = d.size + (d.stock > 0 && d.price > 0 ? '' : ' (Hết hàng)');
             sizeSelect.appendChild(opt);
         });
-        // Always select the first size if available
+        // Ưu tiên chọn size đầu tiên còn hàng và có giá > 0
         if (details.length > 0) {
-            sizeSelect.selectedIndex = 0;
+            const firstAvailableIdx = details.findIndex(d => d.stock > 0 && d.price > 0);
+            sizeSelect.selectedIndex = firstAvailableIdx !== -1 ? firstAvailableIdx : 0;
             // Trigger change event so price/stock update for new size
             sizeSelect.dispatchEvent(new Event('change'));
         }
@@ -573,10 +574,11 @@
         const details = productTypes[typeIdx]?.detail || [];
         const detail = details[sizeIdx] || details[0] || { price: 0, stock: 0 };
         const stock = detail.stock || 0;
+        const price = typeof detail.price === 'number' ? detail.price : parseInt(detail.price) || 0;
         // Badge trạng thái
         const badgeSuccess = document.querySelector('.single-product-details .badge-success');
         const badgeDanger = document.querySelector('.single-product-details .badge-outofstock');
-        if (stock === 0) {
+        if (stock === 0 || price === 0) {
             if (badgeSuccess) badgeSuccess.style.display = 'none';
             if (badgeDanger) badgeDanger.style.display = '';
             // Chỉ thêm class disabled, KHÔNG set thuộc tính disabled

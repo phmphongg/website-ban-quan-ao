@@ -22,6 +22,7 @@ exports.getHomePage = async (req, res, next) => {
         res.render('pages/index', { // Giả sử bạn có view index.ejs đã Việt hóa
             title: 'Trang Chủ',
             products,
+            popularProducts: products,
             categories,
             wishlistCount,
             cartCount

@@ -86,13 +86,26 @@ exports.getProductListPage = async (req, res, next) => {
             product.ratingCount = totalReviews;
             console.log(`Sản phẩm: ${product.name} - Số sao trung bình: ${avgRating.toFixed(2)} (Hiển thị: ${displayRating} sao, ${totalReviews} đánh giá)`);
         });
-        // Đánh dấu hết hàng nếu tất cả các biến thể đều hết stock
+        // Đánh dấu hết hàng và tính giá hiển thị (ưu tiên giá nhỏ nhất > 0)
         Object.values(groupedProducts).forEach(product => {
             let allOut = true;
+            let validPrices = [];
             product.types.forEach(type => {
-                if (type.detail.some(d => d.stock > 0)) allOut = false;
+                if (Array.isArray(type.detail)) {
+                    type.detail.forEach(d => {
+                        const s = Number(d.stock) || 0;
+                        const p = Number(d.price) || 0;
+                        if (s > 0 && p > 0) {
+                            allOut = false;
+                            validPrices.push(p);
+                        } else if (p > 0) {
+                            validPrices.push(p);
+                        }
+                    });
+                }
             });
             product.isOutOfStock = allOut;
+            product.price = validPrices.length > 0 ? Math.min(...validPrices) : 0;
         });
         // Lấy danh sách type duy nhất từ các sản phẩm
         const typesSet = new Set();
@@ -165,7 +178,7 @@ exports.getProductDetailPage = async (req, res, next) => {
             })),
             detail: variants[0].detail,
             reviewProducts: allReviews,
-            isOutOfStock: variants.every(v => v.detail.every(d => d.stock === 0)),
+            isOutOfStock: variants.every(v => (v.detail || []).every(d => (d.stock || 0) <= 0 || (d.price || 0) <= 0)),
             rating: avgRating,
             displayRating,
             ratingCount: totalReviews
@@ -219,10 +232,16 @@ exports.searchProductsPage = async (req, res, next) => {
             // Sử dụng $regex để tìm kiếm không phân biệt chữ hoa/thường và một phần của từ
             // Để có tìm kiếm full-text hiệu quả hơn, cân nhắc sử dụng $text index trong MongoDB
             products = await Product.find({
-                name: { $regex: searchQuery, $options: 'i' } // 'i' for case-insensitive
-                // Bạn có thể mở rộng tìm kiếm cho các trường khác như description, tags, etc.
-                // { $or: [ { name: { $regex: searchQuery, $options: 'i' } }, { description: { $regex: searchQuery, $options: 'i' } } ] }
-            }).sort({ createdAt: -1 }); // Sắp xếp kết quả
+                name: { $regex: searchQuery, $options: 'i' }
+            }).sort({ createdAt: -1 });
+
+            products = products.map(p => {
+                const pObj = p.toObject ? p.toObject() : p;
+                const validPrices = (pObj.detail || []).map(d => Number(d.price) || 0).filter(pr => pr > 0);
+                pObj.price = validPrices.length > 0 ? Math.min(...validPrices) : 0;
+                pObj.isOutOfStock = !(pObj.detail || []).some(d => (d.stock || 0) > 0 && (d.price || 0) > 0);
+                return pObj;
+            });
         } else {
             pageTitle = "Vui lòng nhập từ khóa để tìm kiếm";
         }
@@ -327,13 +346,26 @@ exports.getCategoryProductsPage = async (req, res, next) => {
             product.displayRating = displayRating;
             product.ratingCount = totalReviews;
         });
-        // Đánh dấu hết hàng nếu tất cả các biến thể đều hết stock
+        // Đánh dấu hết hàng và tính giá hiển thị (ưu tiên giá nhỏ nhất > 0)
         Object.values(groupedProducts).forEach(product => {
             let allOut = true;
+            let validPrices = [];
             product.types.forEach(type => {
-                if (type.detail.some(d => d.stock > 0)) allOut = false;
+                if (Array.isArray(type.detail)) {
+                    type.detail.forEach(d => {
+                        const s = Number(d.stock) || 0;
+                        const p = Number(d.price) || 0;
+                        if (s > 0 && p > 0) {
+                            allOut = false;
+                            validPrices.push(p);
+                        } else if (p > 0) {
+                            validPrices.push(p);
+                        }
+                    });
+                }
             });
             product.isOutOfStock = allOut;
+            product.price = validPrices.length > 0 ? Math.min(...validPrices) : 0;
         });
         const categories = await Category.find({});
         let wishlist = [];
