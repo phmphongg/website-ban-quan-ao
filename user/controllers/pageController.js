@@ -6,24 +6,87 @@ const User = require('../models/UserModel'); // Thêm ở đầu file nếu chư
 exports.getHomePage = async (req, res, next) => {
     try {
         console.log('GET / - Trang chủ');
-        const products = await Product.find()
-            .sort({ createdAt: -1 })
-            .limit(8);
+        const rawProducts = await Product.find().sort({ createdAt: -1 });
+
+        const groupedProducts = {};
+        rawProducts.forEach(prod => {
+            if (!groupedProducts[prod.name]) {
+                const img = prod.image && prod.image.imageData
+                    ? `data:${prod.image.imageType};base64,${prod.image.imageData.toString('base64')}`
+                    : '/img/product-placeholder.png';
+
+                groupedProducts[prod.name] = {
+                    _id: prod._id,
+                    name: prod.name,
+                    description: prod.description,
+                    image: img,
+                    types: [],
+                    reviewProducts: [],
+                    isNew: prod.isNew || false
+                };
+            }
+            groupedProducts[prod.name].types.push({
+                type: prod.type,
+                detail: prod.detail
+            });
+            if (Array.isArray(prod.reviewProducts) && prod.reviewProducts.length > 0) {
+                groupedProducts[prod.name].reviewProducts.push(...prod.reviewProducts);
+            }
+        });
+
+        const popularProducts = Object.values(groupedProducts).map(p => {
+            let validPrices = [];
+            let allOut = true;
+            p.types.forEach(t => {
+                if (Array.isArray(t.detail)) {
+                    t.detail.forEach(d => {
+                        const s = Number(d.stock) || 0;
+                        const pr = Number(d.price) || 0;
+                        if (s > 0 && pr > 0) {
+                            allOut = false;
+                            validPrices.push(pr);
+                        }
+                    });
+                }
+            });
+
+            const totalReviews = p.reviewProducts.length;
+            const totalStars = p.reviewProducts.reduce((sum, r) => sum + (r.star || 0), 0);
+            const avgRating = totalReviews > 0 ? (totalStars / totalReviews) : 0;
+            const displayRating = Math.floor(avgRating + 0.5 * (avgRating % 1 >= 0.5 ? 1 : 0));
+
+            return {
+                _id: p._id,
+                name: p.name,
+                description: p.description,
+                image: p.image,
+                price: validPrices.length > 0 ? Math.min(...validPrices) : 0,
+                isOutOfStock: allOut,
+                rating: avgRating,
+                displayRating: displayRating,
+                ratingCount: totalReviews,
+                isNew: p.isNew
+            };
+        }).slice(0, 6); // Lấy tối đa 6 sản phẩm nổi bật
 
         const categories = await Category.find({});
         let wishlistCount = 0;
         let cartCount = 0;
+        let wishlist = [];
         if (req.session.user) {
             const user = await User.findById(req.session.user._id);
             wishlistCount = user && user.wishlist ? user.wishlist.length : 0;
             cartCount = user && user.carts ? user.carts.reduce((sum, item) => sum + (item.orderNumber || 0), 0) : 0;
+            if (user && user.wishlist) wishlist = user.wishlist;
         }
-        console.log('Dữ liệu render index:', { popularProductsCount: products.length, categoriesCount: categories.length });
-        res.render('pages/index', { // Giả sử bạn có view index.ejs đã Việt hóa
+
+        console.log('Dữ liệu render index:', { popularProductsCount: popularProducts.length, categoriesCount: categories.length });
+        res.render('pages/index', {
             title: 'Trang Chủ',
-            products,
-            popularProducts: products,
+            products: popularProducts,
+            popularProducts,
             categories,
+            wishlist,
             wishlistCount,
             cartCount
         });
