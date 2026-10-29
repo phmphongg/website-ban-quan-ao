@@ -38,7 +38,7 @@
                                                 <i class="fa fa-search search-icon"></i>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="Search ..." class="form-control" />
+                                        <input type="text" placeholder="Tìm kiếm..." class="form-control" />
                                     </div>
                                 </nav>
                             </div>
@@ -49,7 +49,7 @@
                     <div class="container">
                         <div class="page-inner">
                             <div class="page-header">
-                                <h3 class="fw-bold mb-3">Forms</h3>
+                                <h3 class="fw-bold mb-3">Biểu mẫu</h3>
                             </div>
                             <% product.forEach(item=>{ %>
                                 <div class="row">
@@ -61,7 +61,7 @@
                                                     <%- include('../partials/name-form') %>
                                                         <a href="/products" class="btn btn-danger btn-round ms-auto">
                                                             <i class="fa fa-arrow-left"></i>
-                                                            Back
+                                                            Quay lại
                                                         </a>
                                                 </div>
                                             </div>
@@ -79,20 +79,20 @@
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="name">Name</label>
+                                                                <label for="name">Tên sản phẩm</label>
                                                                 <input type="text" name="name" value="<%=item.name %>"
-                                                                    class="form-control" id="name" placeholder="Name" />
+                                                                    class="form-control" id="name" placeholder="Nhập tên sản phẩm" />
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="description">Description</label>
+                                                                <label for="description">Mô tả sản phẩm</label>
                                                                 <input type="text" name="description"
                                                                     value="<%=item.description %>" class="form-control"
-                                                                    id="description" placeholder="Description" />
+                                                                    id="description" placeholder="Nhập mô tả sản phẩm" />
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="type">Type</label>
+                                                                <label for="type">Loại / Màu sắc</label>
                                                                 <input type="text" name="type" value="<%=item.type %>"
-                                                                    class="form-control" id="type" placeholder="Type" />
+                                                                    class="form-control" id="type" placeholder="Nhập loại (Ví dụ: Màu đen...)" />
                                                             </div>
                                                             <style>
                                                                 .seven-col {
@@ -113,7 +113,7 @@
                                                                 }
                                                             </style>
                                                             <div class="form-group">
-                                                                <label for="size">Size</label>
+                                                                <label for="size">Kích cỡ (Size)</label>
                                                                 <div class="container">
                                                                     <div class="row">
                                                                         <div class="seven-col size-border">XS</div>
@@ -127,7 +127,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="price">Price</label>
+                                                                <label for="price">Giá bán theo Size (VNĐ)</label>
                                                                 <div class="container">
                                                                     <div class="row">
                                                                         <% item.detail.forEach(detail=>{ %>
@@ -136,14 +136,14 @@
                                                                                     name="price[<%=detail.size %>]"
                                                                                     value="<%=detail.price %>"
                                                                                     class="form-control"
-                                                                                    placeholder="<%=detail.size %> Price" />
+                                                                                    placeholder="Giá <%=detail.size %>" />
                                                                             </div>
                                                                             <% }) %>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="stock">Stock</label>
+                                                                <label for="stock">Số lượng tồn kho theo Size</label>
                                                                 <div class="container">
                                                                     <div class="row">
                                                                         <% item.detail.forEach(detail=>{ %>
@@ -152,15 +152,14 @@
                                                                                     name="stock[<%=detail.size %>]"
                                                                                     value="<%=detail.stock %>"
                                                                                     class="form-control"
-                                                                                    placeholder="<%=detail.size %> Price" />
+                                                                                    placeholder="Kho <%=detail.size %>" />
                                                                             </div>
                                                                             <% }) %>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="image">Image file
-                                                                    input</label>
+                                                                <label for="image">Hình ảnh sản phẩm mới (chọn nếu muốn đổi ảnh)</label>
                                                                 <input type="file" name="image"
                                                                     class="form-control-file" id="image" />
                                                             </div>
@@ -168,7 +167,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-action">
-                                                    <button class="btn btn-success">Submit</button>
+                                                    <button class="btn btn-success">Lưu thay đổi</button>
                                                 </div>
                                             </form>
                                         </div>

@@ -4,7 +4,7 @@ const PopupService = require("../service/popup-service");
 class OrderControllers {
   async index(req, res) {
     const orders = await OrderModels.find({}).sort({ orderDate: -1 });
-    const nameTable = "Order Table";
+    const nameTable = "Danh sách đơn hàng";
     res.render("orders/index", { nameTable, orders });
   }
   async approved(req, res) {
@@ -20,8 +20,8 @@ class OrderControllers {
     return res.redirect("/orders");
   }
   async detail(req, res) {
-    const nameForm = "Order";
-    const nameTable = "Detail";
+    const nameForm = "Đơn hàng";
+    const nameTable = "Chi tiết đơn hàng";
     const order = await OrderModels.findById(req.body.id);
     return res.render("orders/detail", { nameForm, nameTable, order });
   }

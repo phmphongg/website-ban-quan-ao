@@ -38,7 +38,7 @@
                                                 <i class="fa fa-search search-icon"></i>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="Search ..." class="form-control" />
+                                        <input type="text" placeholder="Tìm kiếm..." class="form-control" />
                                     </div>
                                 </nav>
                             </div>
@@ -57,10 +57,10 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <div class="d-flex align-items-center">
-                                                <h4>Add Row</h4>
+                                                <h4>Thêm danh mục</h4>
                                                 <a href="/categories/create" class="btn btn-primary btn-round ms-auto">
                                                     <i class="fa fa-plus"></i>
-                                                    Add Row
+                                                    Thêm danh mục
                                                 </a>
                                             </div>
                                         </div>
@@ -70,16 +70,16 @@
                                                 <table id="add-row" class="display table table-striped table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <td>Image</td>
-                                                            <td>Name</td>
-                                                            <th style="width: 10%">Action</th>
+                                                            <th>Hình ảnh</th>
+                                                            <th>Tên danh mục</th>
+                                                            <th style="width: 10%">Thao tác</th>
                                                         </tr>
                                                     </thead>
                                                     <tfoot>
                                                         <tr>
-                                                            <td>Image</td>
-                                                            <td>Name</td>
-                                                            <th>Action</th>
+                                                            <th>Hình ảnh</th>
+                                                            <th>Tên danh mục</th>
+                                                            <th>Thao tác</th>
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
@@ -97,21 +97,21 @@
                                                                     <div class="form-button-action">
                                                                         <a href="/categories/show/<%=category.id %>">
                                                                             <button type="button"
-                                                                                data-bs-toggle="tooltip" title="Detail"
+                                                                                data-bs-toggle="tooltip" title="Xem chi tiết"
                                                                                 class="btn btn-link btn-info">
                                                                                 <i class="fa fa-eye"></i>
                                                                             </button>
                                                                         </a>
                                                                         <a href="/categories/edit/<%=category.id %>">
                                                                             <button type="button"
-                                                                                data-bs-toggle="tooltip" title="Edit"
+                                                                                data-bs-toggle="tooltip" title="Chỉnh sửa"
                                                                                 class="btn btn-link btn-primary">
                                                                                 <i class="fa fa-edit"></i>
                                                                             </button>
                                                                         </a>
                                                                         <a href="/categories/destroy/<%=category.id %>">
                                                                             <button type="button"
-                                                                                data-bs-toggle="tooltip" title="Destroy"
+                                                                                data-bs-toggle="tooltip" title="Xóa"
                                                                                 class="btn btn-link btn-danger">
                                                                                 <i class="fa fa-times"></i>
                                                                             </button>

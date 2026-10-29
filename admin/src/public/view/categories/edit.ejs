@@ -38,7 +38,7 @@
                                                 <i class="fa fa-search search-icon"></i>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="Search ..." class="form-control" />
+                                        <input type="text" placeholder="Tìm kiếm..." class="form-control" />
                                     </div>
                                 </nav>
                             </div>
@@ -49,7 +49,7 @@
                     <div class="container">
                         <div class="page-inner">
                             <div class="page-header">
-                                <h3 class="fw-bold mb-3">Forms</h3>
+                                <h3 class="fw-bold mb-3">Biểu mẫu</h3>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -60,7 +60,7 @@
                                                 <%- include('../partials/name-form') %>
                                                     <a href="/categories" class="btn btn-danger btn-round ms-auto">
                                                         <i class="fa fa-arrow-left"></i>
-                                                        Back
+                                                        Quay lại
                                                     </a>
                                             </div>
                                         </div>
@@ -70,13 +70,12 @@
                                                 <div class="row">
                                                     <div class="col-md-12 col-lg-12">
                                                         <div class="form-group">
-                                                            <label for="name">Name</label>
+                                                            <label for="name">Tên danh mục</label>
                                                             <input type="text" name="name" value="<%= category.name %>"
-                                                                class="form-control" id="name" placeholder="Name" />
+                                                                class="form-control" id="name" placeholder="Nhập tên danh mục" />
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="image">Image file
-                                                                input</label>
+                                                            <label for="image">Hình ảnh đại diện mới</label>
                                                             <input type="file" name="image" class="form-control-file"
                                                                 id="image" />
                                                         </div>
@@ -84,7 +83,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-action">
-                                                <button class="btn btn-success">Submit</button>
+                                                <button class="btn btn-success">Lưu thay đổi</button>
                                             </div>
                                         </form>
 

@@ -38,7 +38,7 @@
                                                 <i class="fa fa-search search-icon"></i>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="Search ..." class="form-control" />
+                                        <input type="text" placeholder="Tìm kiếm..." class="form-control" />
                                     </div>
                                 </nav>
                             </div>
@@ -49,7 +49,7 @@
                     <div class="container">
                         <div class="page-inner">
                             <div class="page-header">
-                                <h3 class="fw-bold mb-3">Forms</h3>
+                                <h3 class="fw-bold mb-3">Biểu mẫu</h3>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -60,7 +60,7 @@
                                                 <%- include('../partials/name-form') %>
                                                     <a href="/users" class="btn btn-danger btn-round ms-auto">
                                                         <i class="fa fa-arrow-left"></i>
-                                                        Back
+                                                        Quay lại
                                                     </a>
                                             </div>
                                         </div>
@@ -71,28 +71,28 @@
                                                         <input type="hidden" name="id" value="<%=user.id %>">
                                                         <input type="hidden" name="account" value="<%=user.account %>">
                                                         <div class="form-group">
-                                                            <label for="password">Password</label>
+                                                            <label for="password">Mật khẩu mới (để trống nếu không đổi)</label>
                                                             <input type="password" name="password" class="form-control"
-                                                                id="password" placeholder="Password" />
+                                                                id="password" placeholder="Nhập mật khẩu mới" />
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="passwordConfirm">Password Confirm</label>
+                                                            <label for="passwordConfirm">Xác nhận mật khẩu</label>
                                                             <input type="password" name="passwordConfirm"
                                                                 class="form-control" id="passwordConfirm"
-                                                                placeholder="Password Confirm" />
+                                                                placeholder="Nhập lại mật khẩu" />
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="name">Name</label>
+                                                            <label for="name">Họ và tên</label>
                                                             <input type="text" name="name" value="<%=user.name %>"
                                                                 class="form-control" id="name"
-                                                                placeholder="Enter Your Name" />
+                                                                placeholder="Nhập họ và tên" />
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Role</label><br />
+                                                            <label>Vai trò</label><br />
                                                             <div class="d-flex">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label" for="user">
-                                                                        User
+                                                                        Khách hàng (User)
                                                                     </label>
                                                                     <input class="form-check-input" type="radio"
                                                                         name="role" value="User" id="user" <%
@@ -103,7 +103,7 @@
                                                                 </div>
                                                                 <div class="form-check">
                                                                     <label class="form-check-label" for="shipper">
-                                                                        Shipper
+                                                                        Giao hàng (Shipper)
                                                                     </label>
                                                                     <input class="form-check-input" type="radio"
                                                                         name="role" value="Shipper" id="shipper" <%
@@ -114,7 +114,7 @@
                                                                 </div>
                                                                 <div class="form-check">
                                                                     <label class="form-check-label" for="admin">
-                                                                        Admin
+                                                                        Quản trị viên (Admin)
                                                                     </label>
                                                                     <input class="form-check-input" type="radio"
                                                                         name="role" value="Admin" id="admin" <%
@@ -126,28 +126,28 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="phone">Phone</label>
+                                                            <label for="phone">Số điện thoại</label>
                                                             <input type="text" name="phone" value="<%=user.phone %>"
                                                                 class="form-control" id="phone"
-                                                                placeholder="Enter Phone" />
+                                                                placeholder="Nhập số điện thoại" />
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="gmail">Gmail</label>
+                                                            <label for="gmail">Email</label>
                                                             <input type="text" name="gmail" value="<%=user.gmail %>"
                                                                 class="form-control" id="gmail"
-                                                                placeholder="Enter Gmail" />
+                                                                placeholder="Nhập email" />
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="address">Address</label>
+                                                            <label for="address">Địa chỉ</label>
                                                             <input type="text" name="address" value="<%=user.address %>"
                                                                 class="form-control" id="address"
-                                                                placeholder="Enter Address" />
+                                                                placeholder="Nhập địa chỉ" />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="card-action">
-                                                <button class="btn btn-success">Submit</button>
+                                                <button class="btn btn-success">Lưu thay đổi</button>
                                             </div>
                                         </form>
                                     </div>

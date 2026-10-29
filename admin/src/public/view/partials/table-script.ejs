@@ -14,8 +14,27 @@
 <script>
     $(document).ready(function () {
 
+        // Cấu hình ngôn ngữ tiếng Việt cho DataTable
+        const viLanguage = {
+            search: "Tìm kiếm:",
+            searchPlaceholder: "Tìm kiếm...",
+            lengthMenu: "Hiển thị _MENU_ mục",
+            info: "Hiển thị _START_ đến _END_ trong tổng số _TOTAL_ mục",
+            infoEmpty: "Hiển thị 0 đến 0 trong 0 mục",
+            infoFiltered: "(lọc từ _MAX_ mục)",
+            zeroRecords: "Không tìm thấy dữ liệu phù hợp",
+            emptyTable: "Không có dữ liệu trong bảng",
+            paginate: {
+                first: "Đầu",
+                last: "Cuối",
+                next: "Tiếp",
+                previous: "Trước"
+            }
+        };
+
         $("#multi-filter-select").DataTable({
             pageLength: 5,
+            language: viLanguage,
             initComplete: function () {
                 this.api()
                     .columns()
@@ -49,6 +68,7 @@
         // Add Row
         $("#add-row").DataTable({
             pageLength: 5,
+            language: viLanguage,
         });
 
     });

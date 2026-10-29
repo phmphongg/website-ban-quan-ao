@@ -8,7 +8,7 @@ class UserControllers {
   async index(req, res) {
     try {
       const users = await UserModels.find({});
-      const nameTable = "Users' Table";
+      const nameTable = "Danh sách người dùng";
       res.render("users/index", { nameTable, users });
     } catch (error) {
       //log và thông báo về lỗi
@@ -17,7 +17,7 @@ class UserControllers {
     }
   }
   async create(req, res) {
-    const nameForm = "Create User";
+    const nameForm = "Thêm người dùng";
     res.render("users/create", { nameForm });
   }
   async store(req, res) {
@@ -100,7 +100,7 @@ res.render("users/show", { user });
   }
   async edit(req, res) {
     const user = await UserModels.findById(req.params.id);
-    const nameForm = "Edit User";
+    const nameForm = "Chỉnh sửa người dùng";
     res.render("users/edit", { nameForm, user });
   }
   async update(req, res) {

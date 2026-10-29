@@ -38,7 +38,7 @@
                                                 <i class="fa fa-search search-icon"></i>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="Search ..." class="form-control" />
+                                        <input type="text" placeholder="Tìm kiếm..." class="form-control" />
                                     </div>
                                 </nav>
                             </div>
@@ -57,6 +57,7 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <div class="d-flex align-items-center">
+                                                <h4>Danh sách đơn hàng</h4>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -65,26 +66,26 @@
                                                 <table id="add-row" class="display table table-striped table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <td>Full Name</td>
-                                                            <td>Address</td>
-                                                            <td>Phone</td>
-                                                            <td>Payment Method</td>
-                                                            <td>Payment Status</td>
-                                                            <td>Status</td>
-                                                            <td>Total Amount</td>
-                                                            <th style="width: 10%">Action</th>
+                                                            <th>Họ và tên</th>
+                                                            <th>Địa chỉ</th>
+                                                            <th>Số điện thoại</th>
+                                                            <th>Phương thức thanh toán</th>
+                                                            <th>Thanh toán</th>
+                                                            <th>Trạng thái</th>
+                                                            <th>Tổng tiền</th>
+                                                            <th style="width: 10%">Thao tác</th>
                                                         </tr>
                                                     </thead>
                                                     <tfoot>
                                                         <tr>
-                                                            <td>Full Name</td>
-                                                            <td>Address</td>
-                                                            <td>Phone</td>
-                                                            <td>Payment Method</td>
-                                                            <td>Payment Status</td>
-                                                            <td>Status</td>
-                                                            <td>Total Amount</td>
-                                                            <th style="width: 10%">Action</th>
+                                                            <th>Họ và tên</th>
+                                                            <th>Địa chỉ</th>
+                                                            <th>Số điện thoại</th>
+                                                            <th>Phương thức thanh toán</th>
+                                                            <th>Thanh toán</th>
+                                                            <th>Trạng thái</th>
+                                                            <th>Tổng tiền</th>
+                                                            <th>Thao tác</th>
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
@@ -100,16 +101,27 @@
                                                                     <%=order.shippingAddress.phone %>
                                                                 </td>
                                                                 <td>
-                                                                    <%=order.paymentMethod %>
+                                                                    <%=order.paymentMethod === 'COD' ? 'Tiền mặt (COD)' : order.paymentMethod %>
                                                                 </td>
                                                                 <td>
-                                                                    <%=order.paymentStatus %>
+                                                                    <span class="badge <%= order.paymentStatus === 'paid' ? 'bg-success' : 'bg-warning text-dark' %>">
+                                                                        <%= order.paymentStatus === 'paid' ? 'Đã thanh toán' : 'Chưa thanh toán' %>
+                                                                    </span>
                                                                 </td>
                                                                 <td id="chang-status">
-                                                                    <%=order.status %>
+                                                                    <% 
+                                                                        let statusBadge = 'bg-secondary';
+                                                                        let statusText = order.status;
+                                                                        if (order.status === 'pending') { statusBadge = 'bg-warning text-dark'; statusText = 'Chờ duyệt'; }
+                                                                        else if (order.status === 'waiting') { statusBadge = 'bg-info'; statusText = 'Đã duyệt'; }
+                                                                        else if (order.status === 'shipping') { statusBadge = 'bg-primary'; statusText = 'Đang giao'; }
+                                                                        else if (order.status === 'delivered') { statusBadge = 'bg-success'; statusText = 'Đã giao'; }
+                                                                        else if (order.status === 'cancelled') { statusBadge = 'bg-danger'; statusText = 'Đã hủy'; }
+                                                                    %>
+                                                                    <span class="badge <%= statusBadge %>"><%= statusText %></span>
                                                                 </td>
                                                                 <td>
-                                                                    <%=order.totalAmount %>
+                                                                    <%=order.totalAmount ? order.totalAmount.toLocaleString('vi-VN') : 0 %> <u>đ</u>
                                                                 </td>
                                                                 <td>
                                                                     <div class="form-button-action">
@@ -123,7 +135,7 @@
                                                                                         <div class="form-button-action">
                                                                                             <button type="submit"
                                                                                                 data-bs-toggle="tooltip"
-                                                                                                title="approve"
+                                                                                                title="Duyệt đơn"
                                                                                                 class="btn btn-link btn-warning">
                                                                                                 <i
                                                                                                     class="fa fa-hourglass-half"></i>
@@ -134,22 +146,22 @@
                                                                                 <% } else if(order.status=="waiting" ){
                                                                                     %>
                                                                                     <div class="form-button-action">
-                                                                                        <button type="submit"
+                                                                                        <button type="button"
                                                                                             data-bs-toggle="tooltip"
-                                                                                            title="approved"
+                                                                                            title="Đã duyệt"
                                                                                             class="btn btn-link btn-success">
                                                                                             <i
-                                                                                                class="fa fa-hourglass-half"></i>
+                                                                                                class="fa fa-check"></i>
                                                                                         </button>
                                                                                     </div>
                                                                                     <% } else{ %>
                                                                                         <div class="form-button-action">
-                                                                                            <button type="submit"
+                                                                                            <button type="button"
                                                                                                 data-bs-toggle="tooltip"
-                                                                                                title="done"
+                                                                                                title="Hoàn tất"
                                                                                                 class="btn btn-link btn-secondary">
                                                                                                 <i
-                                                                                                    class="fa fa-hourglass-half"></i>
+                                                                                                    class="fa fa-check-double"></i>
                                                                                             </button>
                                                                                         </div>
                                                                                         <% } %>
@@ -162,7 +174,7 @@
                                                                                 <div class="form-button-action">
                                                                                     <button type="submit"
                                                                                         data-bs-toggle="tooltip"
-                                                                                        title="Detail"
+                                                                                        title="Chi tiết đơn hàng"
                                                                                         class="btn btn-link btn-info">
                                                                                         <i class="fa fa-eye"></i>
                                                                                     </button>
@@ -177,7 +189,7 @@
                                                                                 <div class="form-button-action">
                                                                                     <button type="submit"
                                                                                         data-bs-toggle="tooltip"
-                                                                                        title="Cancelled"
+                                                                                        title="Hủy đơn hàng"
                                                                                         class="btn btn-link btn-danger">
                                                                                         <i class="fa fa-times"></i>
                                                                                     </button>

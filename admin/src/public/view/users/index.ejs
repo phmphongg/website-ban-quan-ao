@@ -38,7 +38,7 @@
                                                 <i class="fa fa-search search-icon"></i>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="Search ..." class="form-control" />
+                                        <input type="text" placeholder="Tìm kiếm..." class="form-control" />
                                     </div>
                                 </nav>
                             </div>
@@ -57,10 +57,10 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <div class="d-flex align-items-center">
-                                                <h4>Add Row</h4>
+                                                <h4>Thêm người dùng</h4>
                                                 <a href="/users/create" class="btn btn-primary btn-round ms-auto">
                                                     <i class="fa fa-plus"></i>
-                                                    Add Row
+                                                    Thêm người dùng
                                                 </a>
                                             </div>
                                         </div>
@@ -72,8 +72,8 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header border-0">
                                                             <h5 class="modal-title">
-                                                                <span class="fw-mediumbold"> New</span>
-                                                                <span class="fw-light"> Row </span>
+                                                                <span class="fw-mediumbold">Thêm</span>
+                                                                <span class="fw-light"> người dùng</span>
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -88,20 +88,20 @@
                                                 <table id="add-row" class="display table table-striped table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th>Account</th>
-                                                            <th>Name</th>
-                                                            <th>Role</th>
-                                                            <th>Phone</th>
-                                                            <th style="width: 10%">Action</th>
+                                                            <th>Tài khoản</th>
+                                                            <th>Họ và tên</th>
+                                                            <th>Vai trò</th>
+                                                            <th>Số điện thoại</th>
+                                                            <th style="width: 10%">Thao tác</th>
                                                         </tr>
                                                     </thead>
                                                     <tfoot>
                                                         <tr>
-                                                            <th>Account</th>
-                                                            <th>Name</th>
-                                                            <th>Role</th>
-                                                            <th>Phone</th>
-                                                            <th>Action</th>
+                                                            <th>Tài khoản</th>
+                                                            <th>Họ và tên</th>
+                                                            <th>Vai trò</th>
+                                                            <th>Số điện thoại</th>
+                                                            <th>Thao tác</th>
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
@@ -123,7 +123,7 @@
                                                                     <div class="form-button-action">
                                                                         <a href="/users/edit/<%=user.id%>">
                                                                             <button type="button"
-                                                                                data-bs-toggle="tooltip" title="Edit"
+                                                                                data-bs-toggle="tooltip" title="Chỉnh sửa"
                                                                                 class="btn btn-link btn-primary">
                                                                                 <i class="fa fa-edit"></i>
                                                                             </button>
@@ -132,7 +132,7 @@
                                                                             class="btn-destroy">
                                                                             <input type="hidden" name="id"
                                                                                 value="<%=user.id%>">
-                                                                            <button type="submit" title="Destroy"
+                                                                            <button type="submit" title="Xóa"
                                                                                 class="btn btn-link btn-danger">
                                                                                 <i class="fa fa-times"></i>
                                                                             </button>

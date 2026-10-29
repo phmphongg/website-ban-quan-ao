@@ -38,7 +38,7 @@
                                                 <i class="fa fa-search search-icon"></i>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="Search ..." class="form-control" />
+                                        <input type="text" placeholder="Tìm kiếm..." class="form-control" />
                                     </div>
                                 </nav>
                             </div>
@@ -49,7 +49,7 @@
                     <div class="container">
                         <div class="page-inner">
                             <div class="page-header">
-                                <h3 class="fw-bold mb-3">Forms</h3>
+                                <h3 class="fw-bold mb-3">Biểu mẫu</h3>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -60,7 +60,7 @@
                                                 <%- include('../partials/name-form') %>
                                                     <a href="/products" class="btn btn-danger btn-round ms-auto">
                                                         <i class="fa fa-arrow-left"></i>
-                                                        Back
+                                                        Quay lại
                                                     </a>
                                             </div>
                                         </div>
@@ -69,19 +69,19 @@
                                                 <div class="row">
                                                     <div class="col-md-12 col-lg-12">
                                                         <div class="form-group">
-                                                            <label for="name">Name</label>
+                                                            <label for="name">Tên sản phẩm</label>
                                                             <input type="text" name="name" class="form-control"
-                                                                id="name" placeholder="Name" />
+                                                                id="name" placeholder="Nhập tên sản phẩm" />
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="description">Description</label>
+                                                            <label for="description">Mô tả sản phẩm</label>
                                                             <input type="text" name="description" class="form-control"
-                                                                id="description" placeholder="Description" />
+                                                                id="description" placeholder="Nhập mô tả sản phẩm" />
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="type">Type</label>
+                                                            <label for="type">Loại / Màu sắc</label>
                                                             <input type="text" name="type" class="form-control"
-                                                                id="type" placeholder="Type" />
+                                                                id="type" placeholder="Nhập loại (Ví dụ: Màu đen, Màu trắng...)" />
                                                         </div>
                                                         <style>
                                                             .seven-col {
@@ -92,85 +92,84 @@
                                                             }
                                                         </style>
                                                         <div class="form-group">
-                                                            <label for="price">Price</label>
+                                                            <label for="price">Giá bán theo Size (VNĐ)</label>
                                                             <div class="container">
                                                                 <div class="row">
                                                                     <div class="seven-col"><input type="number"
                                                                             step="any" name="price[XS]"
                                                                             class="form-control"
-                                                                            placeholder="XS Price" />
+                                                                            placeholder="Giá XS" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             step="any" name="price[S]"
                                                                             class="form-control"
-                                                                            placeholder="S Price" />
+                                                                            placeholder="Giá S" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             step="any" name="price[M]"
                                                                             class="form-control"
-                                                                            placeholder="M Price" />
+                                                                            placeholder="Giá M" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             step="any" name="price[L]"
                                                                             class="form-control"
-                                                                            placeholder="L Price" />
+                                                                            placeholder="Giá L" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             step="any" name="price[XL]"
                                                                             class="form-control"
-                                                                            placeholder="XL Price" />
+                                                                            placeholder="Giá XL" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             step="any" name="price[XXL]"
                                                                             class="form-control"
-                                                                            placeholder="XXL Price" />
+                                                                            placeholder="Giá XXL" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             step="any" name="price[XXXL]"
                                                                             class="form-control"
-                                                                            placeholder="XXXL Price" />
+                                                                            placeholder="Giá XXXL" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="stock">Stock</label>
+                                                            <label for="stock">Số lượng tồn kho theo Size</label>
                                                             <div class="container">
                                                                 <div class="row">
                                                                     <div class="seven-col"><input type="number"
                                                                             name="stock[XS]" class="form-control"
-                                                                            placeholder="XS Stock" />
+                                                                            placeholder="Kho XS" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             name="stock[S]" class="form-control"
-                                                                            placeholder="S Stock" />
+                                                                            placeholder="Kho S" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             name="stock[M]" class="form-control"
-                                                                            placeholder="M Stock" />
+                                                                            placeholder="Kho M" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             name="stock[L]" class="form-control"
-                                                                            placeholder="L Stock" />
+                                                                            placeholder="Kho L" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             name="stock[XL]" class="form-control"
-                                                                            placeholder="XL Stock" />
+                                                                            placeholder="Kho XL" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             name="stock[XXL]" class="form-control"
-                                                                            placeholder="XXL Stock" />
+                                                                            placeholder="Kho XXL" />
                                                                     </div>
                                                                     <div class="seven-col"><input type="number"
                                                                             name="stock[XXXL]" class="form-control"
-                                                                            placeholder="XXXL Stock" />
+                                                                            placeholder="Kho XXXL" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="image">Image file
-                                                                input</label>
+                                                            <label for="image">Hình ảnh sản phẩm</label>
                                                             <input type="file" name="image" class="form-control-file"
                                                                 id="image" />
                                                         </div>
@@ -178,7 +177,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-action">
-                                                <button class="btn btn-success">Submit</button>
+                                                <button class="btn btn-success">Lưu sản phẩm</button>
                                             </div>
                                         </form>
 

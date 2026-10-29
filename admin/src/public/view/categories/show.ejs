@@ -38,7 +38,7 @@
                                                 <i class="fa fa-search search-icon"></i>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="Search ..." class="form-control" />
+                                        <input type="text" placeholder="Tìm kiếm..." class="form-control" />
                                     </div>
                                 </nav>
                             </div>
@@ -57,10 +57,10 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h4 class="mb-0">You can unassign product in categories</h4>
+                                                <h4 class="mb-0">Danh sách sản phẩm trong danh mục</h4>
                                                 <a href="/categories" class="btn btn-danger btn-round">
                                                     <i class="fa fa-arrow-left"></i>
-                                                    Back
+                                                    Quay lại
                                                 </a>
                                             </div>
                                         </div>
@@ -71,26 +71,26 @@
                                                 <table id="add-row" class="display table table-striped table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <td>Image</td>
-                                                            <td>Name</td>
-                                                            <td>Description</td>
-                                                            <td>Price</td>
-                                                            <th style="width: 10%">Action</th>
+                                                            <th>Hình ảnh</th>
+                                                            <th>Tên sản phẩm</th>
+                                                            <th>Mô tả</th>
+                                                            <th>Giá bán</th>
+                                                            <th style="width: 10%">Thao tác</th>
                                                         </tr>
                                                     </thead>
                                                     <tfoot>
                                                         <tr>
-                                                            <td>Image</td>
-                                                            <td>Name</td>
-                                                            <td>Description</td>
-                                                            <td>Price</td>
-                                                            <th>Action</th>
+                                                            <th>Hình ảnh</th>
+                                                            <th>Tên sản phẩm</th>
+                                                            <th>Mô tả</th>
+                                                            <th>Giá bán</th>
+                                                            <th>Thao tác</th>
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
                                                         <% products.forEach(product=>{ %>
                                                             <tr>
-                                                                <td><img style="width: 100px;height: 75px;"
+                                                                <td><img style="width: 100px;height: 75px;object-fit:contain;"
                                                                         class="image"
                                                                         src="/products/image/<%=product._id%>"
                                                                         alt="<%=product.image?.imageName%>">
@@ -102,7 +102,7 @@
                                                                     <%=product.description %>
                                                                 </td>
                                                                 <td>
-                                                                    <%=product.detail.price %> <u>đ</u>
+                                                                    <%=product.detail.price ? product.detail.price.toLocaleString('vi-VN') : 0 %> <u>đ</u>
                                                                 </td>
                                                                 <td>
                                                                     <form action="/categories/unassign" method="post">
@@ -114,7 +114,7 @@
                                                                             <div class="form-button-action">
                                                                                 <button type="submit"
                                                                                     data-bs-toggle="tooltip"
-                                                                                    title="Unassign"
+                                                                                    title="Gỡ khỏi danh mục"
                                                                                     class="btn btn-danger">
                                                                                     <i class="fa fa-unlink"></i>
                                                                                 </button>

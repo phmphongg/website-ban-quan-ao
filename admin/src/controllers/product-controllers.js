@@ -32,11 +32,11 @@ class ProductController {
 
     // res.send(products);
     // const products = await ProductModels.find({});
-    const nameTable = "Products' Table";
+    const nameTable = "Danh sách sản phẩm";
     res.render("products/index", { nameTable, products });
   }
   async create(req, res) {
-    const nameForm = "Create Product";
+    const nameForm = "Thêm sản phẩm";
     res.render("products/create", { nameForm });
   }
   async store(req, res) {
@@ -105,7 +105,7 @@ class ProductController {
   async edit(req, res) {
     const product = await ProductModels.find({ name: req.params.id });
     // res.send(product);
-    const nameForm = "Edit Product";
+    const nameForm = "Chỉnh sửa sản phẩm";
     res.render("products/edit", { product, nameForm });
   }
   async update(req, res) {

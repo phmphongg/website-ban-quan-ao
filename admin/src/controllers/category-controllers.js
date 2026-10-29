@@ -11,12 +11,12 @@ class CategoryControllers {
     res.send(category.image.imageData);
   }
   async index(req, res) {
-    const nameTable = "Categories Table";
+    const nameTable = "Danh sách danh mục";
     const categories = await CategoryModels.find({});
     return res.render("categories/index", { nameTable, categories });
   }
   async create(req, res) {
-    const nameForm = "Create category";
+    const nameForm = "Thêm danh mục mới";
     return res.render("categories/create", { nameForm });
   }
   async store(req, res) {
@@ -44,7 +44,7 @@ class CategoryControllers {
   async edit(req, res) {
     const id = req.params.id;
     const category = await CategoryModels.findById(id);
-    const nameForm = "Edit Category";
+    const nameForm = "Chỉnh sửa danh mục";
     return res.render("categories/edit", { nameForm, category });
   }
   async update(req, res) {
@@ -101,7 +101,7 @@ class CategoryControllers {
     ]);
     // const products = await ProductModels.find({});
     const categories = await CategoryModels.find({});
-    const nameTable = "Assign products to categories";
+    const nameTable = "Phân loại sản phẩm vào danh mục";
     res.render("categories/assign", { nameTable, products, categories });
   }
   async assignHandler(req, res) {
@@ -155,7 +155,7 @@ class CategoryControllers {
       // 7. Trả về product ra ngoài document
       { $replaceRoot: { newRoot: "$product" } },
     ]);
-    const nameTable = "Category detail";
+    const nameTable = "Chi tiết danh mục";
     return res.render("categories/show", { nameTable, categoryID, products });
   }
   async unassign(req, res) {

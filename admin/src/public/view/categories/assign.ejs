@@ -38,7 +38,7 @@
                                                 <i class="fa fa-search search-icon"></i>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="Search ..." class="form-control" />
+                                        <input type="text" placeholder="Tìm kiếm..." class="form-control" />
                                     </div>
                                 </nav>
                             </div>
@@ -57,7 +57,7 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <div class="d-flex align-items-center">
-                                                <!-- need -->
+                                                <h4>Gán sản phẩm vào danh mục</h4>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -66,22 +66,22 @@
                                                 <table id="add-row" class="display table table-striped table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <td>Image</td>
-                                                            <td>Name</td>
-                                                            <td>Description</td>
-                                                            <td>Price</td>
-                                                            <td>Assign</td>
-                                                            <th style="width: 10%">Action</th>
+                                                            <th>Hình ảnh</th>
+                                                            <th>Tên sản phẩm</th>
+                                                            <th>Mô tả</th>
+                                                            <th>Giá bán</th>
+                                                            <th>Chọn danh mục</th>
+                                                            <th style="width: 10%">Thao tác</th>
                                                         </tr>
                                                     </thead>
                                                     <tfoot>
                                                         <tr>
-                                                            <td>Image</td>
-                                                            <td>Name</td>
-                                                            <td>Description</td>
-                                                            <td>Price</td>
-                                                            <td>Assign</td>
-                                                            <th>Action</th>
+                                                            <th>Hình ảnh</th>
+                                                            <th>Tên sản phẩm</th>
+                                                            <th>Mô tả</th>
+                                                            <th>Giá bán</th>
+                                                            <th>Chọn danh mục</th>
+                                                            <th>Thao tác</th>
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
@@ -99,7 +99,7 @@
                                                                     <%=product.description %>
                                                                 </td>
                                                                 <td>
-                                                                    <%=product.detail.price %> <u>đ</u>
+                                                                    <%=product.detail.price ? product.detail.price.toLocaleString('vi-VN') : 0 %> <u>đ</u>
                                                                 </td>
                                                                 <form action="/categories/assign" method="post">
                                                                     <input type="hidden" name="productName"
@@ -110,7 +110,7 @@
                                                                                 name="categoryID" style="width: 100%;">
                                                                                 <option style="width: 80%;" disabled
                                                                                     selected>
-                                                                                    Choice category
+                                                                                    Chọn danh mục...
                                                                                 </option>
                                                                                 <% categories.forEach(category=>{ %>
                                                                                     <option style="width: 80%;"
@@ -121,13 +121,13 @@
 
                                                                             </select>
                                                                             <% }else{ %>
-                                                                                Categories empty
+                                                                                Chưa có danh mục nào
                                                                                 <% } %>
                                                                     </td>
                                                                     <td>
                                                                         <div class="form-button-action">
                                                                             <button type="submit"
-                                                                                data-bs-toggle="tooltip" title="assign"
+                                                                                data-bs-toggle="tooltip" title="Gán vào danh mục"
                                                                                 class="btn btn-success">
                                                                                 <i class="fa fa-paper-plane"></i>
                                                                             </button>
